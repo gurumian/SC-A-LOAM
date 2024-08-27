@@ -130,12 +130,12 @@ target_include_directories(alaserPGO PUBLIC
   ${PCL_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
 )
-# target_include_directories(alaserPGO PUBLIC
-#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-#   $<INSTALL_INTERFACE:include>
-#   ${PCL_INCLUDE_DIRS}
-#   ${OpenCV_INCLUDE_DIRS}
-# )
+target_include_directories(alaserPGO PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+  ${PCL_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
+)
 target_compile_options(alaserPGO 
   PRIVATE ${OpenMP_CXX_FLAGS}
 )
@@ -144,16 +144,6 @@ target_link_libraries(alaserPGO
   ${OpenMP_CXX_FLAGS}
   gtsam
 )
-#
-
-
-
-
-# target_link_libraries(alaserPGO 
-#   ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES}
-#   ${OpenMP_CXX_FLAGS}
-#   gtsam
-# )
 
 # add_executable(kittiHelper src/kittiHelper.cpp)
 # # target_link_libraries(kittiHelper ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBS})
@@ -165,7 +155,3 @@ target_link_libraries(alaserPGO
 # )
 # ament_target_dependencies(kittiHelper ${dependencies})
 # target_link_libraries(kittiHelper ${PCL_LIBRARIES} ${OpenCV_LIBS})
-
-
-
-
