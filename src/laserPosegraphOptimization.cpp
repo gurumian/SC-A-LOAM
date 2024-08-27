@@ -1098,7 +1098,7 @@ public:
         // pub odom and path 
         nav_msgs::msg::Odometry odomAftPGO;
         nav_msgs::msg::Path pathAftPGO;
-        pathAftPGO.header.frame_id = "/camera_init";
+        pathAftPGO.header.frame_id = "camera_init";
         mKF.lock(); 
         // for (int node_idx=0; node_idx < int(keyframePosesUpdated.size()) - 1; node_idx++) // -1 is just delayed visualization (because sometimes mutexed while adding(push_back) a new one)
         for (int node_idx=0; node_idx < recentIdxUpdated; node_idx++) // -1 is just delayed visualization (because sometimes mutexed while adding(push_back) a new one)
@@ -1107,7 +1107,7 @@ public:
             // const gtsam::Pose3& pose_est = isamCurrentEstimate.at<gtsam::Pose3>(node_idx);
 
             nav_msgs::msg::Odometry odomAftPGOthis;
-            odomAftPGOthis.header.frame_id = "/camera_init";
+            odomAftPGOthis.header.frame_id = "camera_init";
             odomAftPGOthis.child_frame_id = "/aft_pgo";
             odomAftPGOthis.header.stamp = rclcpp::Time(keyframeTimes.at(node_idx) * 1e9);
             // ros::Time().fromSec(keyframeTimes.at(node_idx));
@@ -1127,7 +1127,7 @@ public:
             poseStampAftPGO.pose = odomAftPGOthis.pose.pose;
 
             pathAftPGO.header.stamp = odomAftPGOthis.header.stamp;
-            pathAftPGO.header.frame_id = "/camera_init";
+            pathAftPGO.header.frame_id = "camera_init";
             pathAftPGO.poses.push_back(poseStampAftPGO);
         }
         mKF.unlock(); 
@@ -1262,13 +1262,13 @@ public:
         // loop verification 
         sensor_msgs::msg::PointCloud2 cureKeyframeCloudMsg;
         pcl::toROSMsg(*cureKeyframeCloud, cureKeyframeCloudMsg);
-        cureKeyframeCloudMsg.header.frame_id = "/camera_init";
+        cureKeyframeCloudMsg.header.frame_id = "camera_init";
         // pubLoopScanLocal.publish(cureKeyframeCloudMsg);
         pubLoopScanLocal_->publish(cureKeyframeCloudMsg);
 
         sensor_msgs::msg::PointCloud2 targetKeyframeCloudMsg;
         pcl::toROSMsg(*targetKeyframeCloud, targetKeyframeCloudMsg);
-        targetKeyframeCloudMsg.header.frame_id = "/camera_init";
+        targetKeyframeCloudMsg.header.frame_id = "camera_init";
         pubLoopSubmapLocal_->publish(targetKeyframeCloudMsg);
 
         // ICP Settings
@@ -1591,7 +1591,7 @@ public:
 
         sensor_msgs::msg::PointCloud2 laserCloudMapPGOMsg;
         pcl::toROSMsg(*laserCloudMapPGO, laserCloudMapPGOMsg);
-        laserCloudMapPGOMsg.header.frame_id = "/camera_init";
+        laserCloudMapPGOMsg.header.frame_id = "camera_init";
         pubMapAftPGO_->publish(laserCloudMapPGOMsg);
     }
 

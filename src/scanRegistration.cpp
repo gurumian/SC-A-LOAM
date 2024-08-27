@@ -837,31 +837,31 @@ public:
         sensor_msgs::msg::PointCloud2 laserCloudOutMsg;
         pcl::toROSMsg(*laserCloud, laserCloudOutMsg);
         laserCloudOutMsg.header.stamp = laserCloudMsg->header.stamp;
-        laserCloudOutMsg.header.frame_id = "/camera_init";
+        laserCloudOutMsg.header.frame_id = "camera_init";
         pubLaserCloud_->publish(laserCloudOutMsg);
 
         sensor_msgs::msg::PointCloud2 cornerPointsSharpMsg;
         pcl::toROSMsg(cornerPointsSharp, cornerPointsSharpMsg);
         cornerPointsSharpMsg.header.stamp = laserCloudMsg->header.stamp;
-        cornerPointsSharpMsg.header.frame_id = "/camera_init";
+        cornerPointsSharpMsg.header.frame_id = "camera_init";
         pubCornerPointsSharp_->publish(cornerPointsSharpMsg);
 
         sensor_msgs::msg::PointCloud2 cornerPointsLessSharpMsg;
         pcl::toROSMsg(cornerPointsLessSharp, cornerPointsLessSharpMsg);
         cornerPointsLessSharpMsg.header.stamp = laserCloudMsg->header.stamp;
-        cornerPointsLessSharpMsg.header.frame_id = "/camera_init";
+        cornerPointsLessSharpMsg.header.frame_id = "camera_init";
         pubCornerPointsLessSharp_->publish(cornerPointsLessSharpMsg);
 
         sensor_msgs::msg::PointCloud2 surfPointsFlat2;
         pcl::toROSMsg(surfPointsFlat, surfPointsFlat2);
         surfPointsFlat2.header.stamp = laserCloudMsg->header.stamp;
-        surfPointsFlat2.header.frame_id = "/camera_init";
+        surfPointsFlat2.header.frame_id = "camera_init";
         pubSurfPointsFlat_->publish(surfPointsFlat2);
 
         sensor_msgs::msg::PointCloud2 surfPointsLessFlat2;
         pcl::toROSMsg(surfPointsLessFlat, surfPointsLessFlat2);
         surfPointsLessFlat2.header.stamp = laserCloudMsg->header.stamp;
-        surfPointsLessFlat2.header.frame_id = "/camera_init";
+        surfPointsLessFlat2.header.frame_id = "camera_init";
         pubSurfPointsLessFlat_->publish(surfPointsLessFlat2);
         // std::cout << "published ... " << std::endl;
 
@@ -873,7 +873,7 @@ public:
                 sensor_msgs::msg::PointCloud2 scanMsg;
                 pcl::toROSMsg(laserCloudScans[i], scanMsg);
                 scanMsg.header.stamp = laserCloudMsg->header.stamp;
-                scanMsg.header.frame_id = "/camera_init";
+                scanMsg.header.frame_id = "camera_init";
                 pubEachScan_[i]->publish(scanMsg);
             }
         }
