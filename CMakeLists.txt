@@ -155,3 +155,13 @@ target_link_libraries(alaserPGO
 # )
 # ament_target_dependencies(kittiHelper ${dependencies})
 # target_link_libraries(kittiHelper ${PCL_LIBRARIES} ${OpenCV_LIBS})
+install(TARGETS alaserPGO
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
+  DIRECTORY launch rviz_cfg
+  DESTINATION share/${PROJECT_NAME}
+)
+
+ament_package()

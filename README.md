@@ -101,3 +101,14 @@
 - Delayed RS loop closings 
 - SLAM with multi-session localization 
 - More examples on other datasets (KITTI, complex urban dataset, etc.)
+
+
+## NOTE
+`double free or corruption`
+For the above exeception, you might need to build pcl from the source as follows:
+```bash
+mkdir build; cd build
+cmake -DPCL_ENABLE_AVX=OFF -DPCL_ENABLE_SSE=OFF -DPCL_ENABLE_MARCHNATIVE=OFF ..
+make
+sudo make install
+```
